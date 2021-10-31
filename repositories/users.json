@@ -1,34 +1,12 @@
 [
   {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
-  },
-  {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
-  },
-  {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
-  },
-  {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
-  },
-  {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
-  },
-  {
-    "email": "mcloughman@yahoo.com",
-    "password": "nowayjose"
+    "email": "bfoster@yahoo.com",
+    "password": "password",
+    "id": "4259646c"
   },
   {
     "email": "bfoster@yahoo.com",
-    "password": "password"
-  },
-  {
-    "email": "bfoster@yahoo.com",
-    "password": "password"
+    "password": "password",
+    "id": "a8ecd8cd"
   }
 ]
