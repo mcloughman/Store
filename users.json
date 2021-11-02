@@ -13,5 +13,20 @@
     "email": "mcloughman@gmail.com",
     "password": "abcdefg",
     "id": "c2f9e875"
+  },
+  {
+    "email": "mcraven@medicinehat.com",
+    "password": "number32",
+    "id": "a890726b"
+  },
+  {
+    "email": "joesmith@yahoo.com",
+    "password": "6c76278f06c807480aec8890ea375769ae34fe5a9fde314e7a290e0a595eaf45ec1437160c99acf245330b1ac858bc13ea4b90333d493b889701816a3decac2a.8c3892fc1878f65d",
+    "id": "133e9ccc"
+  },
+  {
+    "email": "jdumars@pistons.com",
+    "password": "49a9e33bd5641e3e2ea32ec5ceae34b9e77217f80e971319e7fab6889a0a61136257a32edb6dff5624d863f954fc12bc056b8719d2ec3b38d7d91873f157b92e.3a227c2ee2adff22",
+    "id": "edf27a2d"
   }
 ]
