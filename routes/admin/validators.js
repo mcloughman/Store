@@ -22,6 +22,7 @@ module.exports = {
   requirePasswordConfirmation: check("passwordConfirmation")
     .trim()
     .isLength({ min: 5, max: 20 })
+    .withMessage("Must be between 5 and 20 characters")
     .custom((passwordConfirmation, { req }) => {
       if (passwordConfirmation !== req.body.password) {
         throw new Error("Password and password confirmation do not match!");
