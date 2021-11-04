@@ -1,6 +1,9 @@
+const layout = require("../layout.js");
+
 module.exports = ({ req }) => {
   // destructure out the req object
-  return `
+  return layout({
+    content: `
     <div>
     Your id is: ${req.session.userId}
     <form method="POST">
@@ -10,5 +13,6 @@ module.exports = ({ req }) => {
       <button>Submit</button>
     </form>
     </div>
-    `;
+    `,
+  });
 };
