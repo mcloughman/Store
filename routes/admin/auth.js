@@ -1,4 +1,5 @@
 const express = require("express");
+const { check, validationResult } = require("express-validator");
 const usersRepo = require("../../repositories/users");
 const signupTemplate = require("../../views/admin/auth/signup");
 const signinTemplate = require("../../views/admin/auth/signin");
@@ -9,21 +10,31 @@ router.get("/signup", (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-router.post("/signup", async (req, res) => {
-  const { email, password, passwordConfirmation } = req.body;
-  const existingUser = await usersRepo.getOneBy({ email });
-  if (existingUser) {
-    return res.send("A user with that email already exists!");
-  }
-  if (password !== passwordConfirmation) {
-    return res.send("<h2>Password Confirmation did not Match Password</h2>");
-  }
-  const user = await usersRepo.create({ email, password });
+router.post(
+  "/signup",
+  [
+    check("email").trim().normalizeEmail().isEmail(),
+    check("password").trim().isLength({ min: 5, max: 20 }),
+    check("passwordConfirmation").trim().isLength({ min: 5, max: 20 }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    console.log(errors);
+    const { email, password, passwordConfirmation } = req.body;
+    const existingUser = await usersRepo.getOneBy({ email });
+    if (existingUser) {
+      return res.send("A user with that email already exists!");
+    }
+    if (password !== passwordConfirmation) {
+      return res.send("<h2>Password Confirmation did not Match Password</h2>");
+    }
+    const user = await usersRepo.create({ email, password });
 
-  //Store the id of the user inside the users cookie
-  req.session.userId = user.id;
-  res.send("<h1>Account Created!</h1>");
-});
+    //Store the id of the user inside the users cookie
+    req.session.userId = user.id;
+    res.send("<h1>Account Created!</h1>");
+  }
+);
 router.get("/signout", async (req, res) => {
   req.session = null;
   res.send("You are logged out");
