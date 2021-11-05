@@ -1,12 +1,5 @@
 const layout = require("../layout.js");
-
-const getError = (errors, prop) => {
-  try {
-    return errors.mapped()[prop].msg;
-  } catch (err) {
-    return "";
-  }
-};
+const { getError } = require("../../helpers.js");
 
 module.exports = ({ req, errors }) => {
   //the errors object will only be passed in potentially on the post route

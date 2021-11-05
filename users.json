@@ -1,25 +1,5 @@
 [
   {
-    "email": "mgrabner@gmail.com",
-    "password": "speed",
-    "id": "4da09e1f"
-  },
-  {
-    "email": "charlie.coyle@yahoo.com",
-    "password": "hockey",
-    "id": "d6eef7b8"
-  },
-  {
-    "email": "mcloughman@gmail.com",
-    "password": "abcdefg",
-    "id": "c2f9e875"
-  },
-  {
-    "email": "mcraven@medicinehat.com",
-    "password": "number32",
-    "id": "a890726b"
-  },
-  {
     "email": "joesmith@yahoo.com",
     "password": "6c76278f06c807480aec8890ea375769ae34fe5a9fde314e7a290e0a595eaf45ec1437160c99acf245330b1ac858bc13ea4b90333d493b889701816a3decac2a.8c3892fc1878f65d",
     "id": "133e9ccc"
@@ -28,11 +8,6 @@
     "email": "jdumars@pistons.com",
     "password": "49a9e33bd5641e3e2ea32ec5ceae34b9e77217f80e971319e7fab6889a0a61136257a32edb6dff5624d863f954fc12bc056b8719d2ec3b38d7d91873f157b92e.3a227c2ee2adff22",
     "id": "edf27a2d"
-  },
-  {
-    "email": "jimPepliski@flames.com",
-    "password": "ffd476295b4a77da6b3824cda82b6517355679c099e0e9b3c53dbed4060517f1b608cae9201707ed437943615f7a7528211d4e113ed1bbf804c1eef08a87307d.5e2c410e8c6fa493",
-    "id": "95927038"
   },
   {
     "email": "ckramer@assman.com",
@@ -53,5 +28,10 @@
     "email": "charlie.coyle@yahoo.com",
     "password": "2af9d41ba3420b3e949bb034bd43feb29aca4d99935a5dfc93b22c8862fac5e2f2dcd479bcdf66afa2d934f461dc31ca1debf4b8218a2dbaad35eacd6378f580.ac67fd728b02bd64",
     "id": "58517875"
+  },
+  {
+    "email": "jakobi@pats.com",
+    "password": "758a100c8caacd83f5f7266996d6c179595c3b0d5d5b325d400124d6a00429bfef059bd7829a08a8a3bd8aa71a3506e9b27f38ef0e3b5cf503fb58877ed11bbd.82369ae70e898f17",
+    "id": "1ab89cc3"
   }
 ]

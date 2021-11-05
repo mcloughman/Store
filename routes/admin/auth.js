@@ -7,7 +7,10 @@ const {
   requireEmail,
   requirePassword,
   requirePasswordConfirmation,
+  requireEmailExists,
+  requireValidPasswordForUser,
 } = require("./validators");
+const users = require("../../repositories/users");
 
 const router = express.Router();
 
@@ -20,11 +23,12 @@ router.post(
   [requireEmail, requirePassword, requirePasswordConfirmation],
   async (req, res) => {
     const errors = validationResult(req);
+    console.log(errors);
     if (!errors.isEmpty()) {
       return res.send(signupTemplate({ req, errors }));
     }
 
-    const { email, password, passwordConfirmation } = req.body;
+    const { email, password } = req.body;
 
     const user = await usersRepo.create({ email, password });
 
@@ -39,25 +43,25 @@ router.get("/signout", async (req, res) => {
 });
 
 router.get("/signin", (req, res) => {
-  res.send(signinTemplate());
+  res.send(signinTemplate({})); // we need an object even if empty to be passed in
 });
 
-router.post("/signin", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await usersRepo.getOneBy({ email });
-  if (!user) {
-    return res.send("Email not found");
-  }
-  const validPassword = await usersRepo.comparePasswords(
-    user.password,
-    password
-  );
+router.post(
+  "/signin",
+  [requireEmailExists, requireValidPasswordForUser],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.send(signinTemplate({ errors }));
+    }
+    const { email } = req.body;
 
-  if (!validPassword) {
-    return res.send("Invalid Password!");
+    const user = await usersRepo.getOneBy({ email });
+
+    req.session.userId = user.id;
+    console.log(user.id);
+    return res.send("Signed In!");
   }
-  req.session.userId = user.id;
-  return res.send("Signed In!");
-});
+);
 
 module.exports = router;

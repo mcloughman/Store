@@ -26,6 +26,36 @@ module.exports = {
     .custom((passwordConfirmation, { req }) => {
       if (passwordConfirmation !== req.body.password) {
         throw new Error("Password and password confirmation do not match!");
+      } else {
+        // This else statement is not in the course, but is necessary!!!!!
+        return true;
+      }
+    }),
+  requireEmailExists: check("email")
+    .trim()
+    .normalizeEmail()
+    .isEmail()
+    .withMessage("Must be a valid email")
+    .custom(async (email) => {
+      const user = await usersRepo.getOneBy({ email });
+      if (!user) {
+        throw new Error("Email not found!");
+      }
+    }),
+  requireValidPasswordForUser: check("password")
+    .trim()
+    .custom(async (password, { req }) => {
+      const user = await usersRepo.getOneBy({ email: req.body.email });
+      if (!user) {
+        throw new Error("Invalid Password---------------");
+      }
+      const validPassword = await usersRepo.comparePasswords(
+        user.password,
+        password
+      );
+
+      if (!validPassword) {
+        throw new Error("Invalid Password!!!");
       }
     }),
 };
