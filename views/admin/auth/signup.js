@@ -7,7 +7,7 @@ module.exports = ({ req, errors }) => {
   return layout({
     content: `
     
-    Your id is: ${req.session.userId}
+    
     <div class="container">
       <div class="row">
         <div class="col">
