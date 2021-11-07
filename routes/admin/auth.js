@@ -15,6 +15,9 @@ const users = require("../../repositories/users");
 const router = express.Router();
 
 router.get("/signup", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/signin");
+  }
   res.send(signupTemplate({ req }));
 });
 
@@ -29,7 +32,7 @@ router.post(
 
     //Store the id of the user inside the users cookie
     req.session.userId = user.id;
-    res.send("<h1>Account Created!</h1>");
+    res.redirect("/admin/products");
   }
 );
 router.get("/signout", async (req, res) => {
@@ -52,7 +55,7 @@ router.post(
 
     req.session.userId = user.id;
     console.log(user.id);
-    return res.send("Signed In!");
+    return res.redirect("admin/products");
   }
 );
 
