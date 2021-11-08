@@ -49,7 +49,10 @@ router.post(
   requireAuth,
   upload.single("image"),
   [requireTitle, requirePrice],
-  handleErrors(productsEditTemplate),
+  handleErrors(productsEditTemplate, async (req) => {
+    const productToChange = await productsRepo.getOne(req.params.id);
+    return { product: productToChange };
+  }),
   async (req, res) => {
     const changes = req.body;
     if (req.file) {
