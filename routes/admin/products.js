@@ -35,7 +35,7 @@ router.post(
   }
 );
 
-router.get("/admin/products/:id/edit", async (req, res) => {
+router.get("/admin/products/:id/edit", requireAuth, async (req, res) => {
   const productToChange = await productsRepo.getOne(req.params.id);
 
   if (!productToChange) {
@@ -43,5 +43,13 @@ router.get("/admin/products/:id/edit", async (req, res) => {
   }
   res.send(productsEditTemplate({ product: productToChange }));
 });
+
+router.post(
+  "/admin/products/:id/edit",
+  requireAuth,
+  upload.single("image"),
+  [requireTitle, requirePrice],
+  async (req, res) => {}
+);
 
 module.exports = router;
