@@ -1,3 +1,11 @@
+.panel {
+  background-color: mediumseagreen;
+}
+
 .h1 {
   color: dodgerblue;
+}
+
+.pink {
+  background-color: pink;
 }

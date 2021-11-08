@@ -15,9 +15,6 @@ const users = require("../../repositories/users");
 const router = express.Router();
 
 router.get("/signup", (req, res) => {
-  if (!req.session.userId) {
-    return res.redirect("/signin");
-  }
   res.send(signupTemplate({ req }));
 });
 
