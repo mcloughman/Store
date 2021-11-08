@@ -49,7 +49,19 @@ router.post(
   requireAuth,
   upload.single("image"),
   [requireTitle, requirePrice],
-  async (req, res) => {}
+  handleErrors(productsEditTemplate),
+  async (req, res) => {
+    const changes = req.body;
+    if (req.file) {
+      changes.image = req.file.buffer.toString("base64");
+    }
+    try {
+      await productsRepo.update(req.params.id, changes);
+    } catch (err) {
+      return res.send("Could Not Find Item!");
+    }
+    res.redirect("/admin/products");
+  }
 );
 
 module.exports = router;
